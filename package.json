@@ -1,0 +1,38 @@
+{
+  "name": "mssqlNodeStarter",
+  "version": "0.0.0",
+  "description": "starter for node and ms sql",
+  "main": "server",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "standard --fix && standard && mocha",
+    "start": "node server/server"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/robbethencourt/mssqlNodeStarter.git"
+  },
+  "author": "Rob Bethencourt",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/robbethencourt/mssqlNodeStarter/issues"
+  },
+  "homepage": "https://github.com/robbethencourt/mssqlNodeStarter",
+  "dependencies": {
+    "body-parser": "~1.16.1",
+    "express": "~4.14.1",
+    "morgan": "~1.8.1",
+    "mssql": "^3.3.0"
+  },
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "chai-http": "^3.0.0",
+    "mocha": "^3.2.0",
+    "standard": "~8.6.0"
+  },
+  "engines": {
+    "node": "6.5.0"
+  }
+}
