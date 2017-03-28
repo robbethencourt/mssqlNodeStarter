@@ -3,6 +3,9 @@ const config = require('../../config/mssqlConnection')
 
 module.exports = function (app) {
   app.get('/', function (req, res) {
+    res.send('index.html')
+  })
+  app.get('/api', function (req, res) {
     var conn = new sql.Connection(config)
     var request = new sql.Request(conn)
 

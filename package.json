@@ -7,9 +7,9 @@
     "test": "test"
   },
   "scripts": {
-    "prebuild": "rimraf dist/bundle.js",
+    "prebuild": "rimraf dist/*",
     "build": "webpack -p --env.prod",
-    "prebuild:dev": "rimraf dist/bundle.js",
+    "prebuild:dev": "rimraf dist/*",
     "dev": "webpack-dev-server --env.dev",
     "build:dev": "webpack --env.dev",
     "test": "standard --fix && standard && mocha",
@@ -62,8 +62,7 @@
     "style-loader": "^0.16.0",
     "webpack": "^2.3.1",
     "webpack-config-utils": "^2.3.0",
-    "webpack-dev-server": "^2.4.2",
-    "webpack-validator": "^2.3.0"
+    "webpack-dev-server": "^2.4.2"
   },
   "engines": {
     "node": "6.5.0"
