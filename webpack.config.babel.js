@@ -3,6 +3,7 @@ const webpack = require('webpack')
 const ProgressBarPlugin = require('progress-bar-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const InlineManifeestWebpackPlugin = require('inline-manifest-webpack-plugin')
+const ExtractTextWebpackPlugin = require('extract-text-webpack-plugin')
 const { getIfUtils, removeEmpty } = require('webpack-config-utils')
 
 module.exports = env => {
@@ -29,18 +30,20 @@ module.exports = env => {
     module: {
       loaders: [
         { test: /\.jsx?$/, loaders: ['babel-loader?compact=false'], exclude: '/node_modules/' },
-        { test: /\.scss$/, loaders: ['style-loader', 'css-loader', 'sass-loader'] }
+        { test: /\.scss$/, loader: ExtractTextWebpackPlugin.extract({ fallback: 'style-loader', loader: 'css-loader!sass-loader' }) }
+        // { test: /\.scss$/, loaders: ['style-loader', 'css-loader', 'sass-loader'] }
       ]
     },
     plugins: removeEmpty([
       new ProgressBarPlugin(),
+      new ExtractTextWebpackPlugin(ifProd('styles.[name].[chunkhash].css', 'styles.[name].css')),
       ifProd(new InlineManifeestWebpackPlugin()),
       ifProd(new webpack.optimize.CommonsChunkPlugin({
         name: ['vendor', 'manifest']
       })),
       new HtmlWebpackPlugin({
-        template: './index.html',
-        inject: 'body'
+        template: './index.html'
+        // inject: 'body'
       })
     ])
   }
