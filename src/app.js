@@ -1,8 +1,22 @@
-import './stylesheets/index.scss'
-function log () {
-  console.log('hello world!')
-}
+import React from 'react'
+import ReactDOM from 'react-dom'
+import { HomeContainer } from './Containers'
 
-log()
+// import './stylesheets/index.scss'
 
-module.exports = log
+ReactDOM.render(
+  <HomeContainer />,
+  document.getElementById('app')
+)
+
+// import { addThree } from './add.js'
+//
+// export function log () {
+//   console.log('hello world!!')
+// }
+//
+// export function add (x, y) {
+//   return x + y
+// }
+//
+// log()

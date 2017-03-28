@@ -1,2 +1,4 @@
 node_modules/
 config/mssqlConnection.js
+coverage/
+dist
