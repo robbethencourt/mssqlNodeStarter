@@ -5,7 +5,8 @@ module.exports = function (app) {
   app.get('/', function (req, res) {
     res.send('index.html')
   })
-  app.get('/api', function (req, res) {
+  app.get('/api/test', function (req, res) {
+    console.log('response from react')
     var conn = new sql.Connection(config)
     var request = new sql.Request(conn)
 
@@ -15,6 +16,7 @@ module.exports = function (app) {
         if (err) {
           console.log(err)
         } else {
+          console.log(recordset)
           res.send(recordset)
         }
         conn.close()

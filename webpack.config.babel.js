@@ -29,10 +29,25 @@ module.exports = env => {
     devtool: ifProd('source-map', 'eval'),
     module: {
       loaders: [
-        { test: /\.jsx?$/, loaders: ['babel-loader?compact=false'], exclude: '/node_modules/' },
-        { test: /\.scss$/, loader: ExtractTextWebpackPlugin.extract({ fallback: 'style-loader', loader: 'css-loader!sass-loader' }) }
-        // { test: /\.scss$/, loaders: ['style-loader', 'css-loader', 'sass-loader'] }
+        {
+          test: /\.jsx?$/,
+          loaders: ['babel-loader?compact=false'],
+          exclude: '/node_modules/'
+        },
+        {
+          test: /\.scss$/,
+          loader: ExtractTextWebpackPlugin.extract({ fallback: 'style-loader', loader: 'css-loader!sass-loader' })
+        }
       ]
+    },
+    devServer: {
+      host: 'localhost',
+      proxy: {
+        '/api/*': {
+          target: 'http://localhost:3000',
+          secure: false
+        }
+      }
     },
     plugins: removeEmpty([
       new ProgressBarPlugin(),
@@ -43,7 +58,6 @@ module.exports = env => {
       })),
       new HtmlWebpackPlugin({
         template: './index.html'
-        // inject: 'body'
       })
     ])
   }
