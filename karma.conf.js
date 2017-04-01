@@ -8,7 +8,7 @@ const srcGlob = 'src/**/!(*.test|*.stub).js'
 module.exports = config => {
   config.set({
     basePath: '',
-    frameworks: ['mocha', 'chai'],
+    frameworks: ['jasmine'],
     files: [testGlob, srcGlob],
     exclude: ['node_modules'],
     preprocessors: {

@@ -10,7 +10,6 @@ module.exports = env => {
   const { ifProd, ifNotProd } = getIfUtils(env)
 
   console.log(env)
-  console.log(ifNotProd())
 
   // HMR for react. follow the link below
   // https://webpack.js.org/guides/hmr-react/
@@ -32,7 +31,7 @@ module.exports = env => {
         {
           test: /\.jsx?$/,
           loaders: ['babel-loader?compact=false'],
-          exclude: '/node_modules/'
+          include: resolve('src')
         },
         {
           test: /\.scss$/,
@@ -41,6 +40,7 @@ module.exports = env => {
       ]
     },
     devServer: {
+      historyApiFallback: true,
       host: 'localhost',
       proxy: {
         '/api/*': {
@@ -48,6 +48,11 @@ module.exports = env => {
           secure: false
         }
       }
+    },
+    externals: {
+      'react/addons': true,
+      'react/lib/ExecutionEnvironment': true,
+      'react/lib/ReactContext': true
     },
     plugins: removeEmpty([
       new ProgressBarPlugin(),

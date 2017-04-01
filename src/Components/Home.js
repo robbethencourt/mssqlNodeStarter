@@ -5,7 +5,7 @@ import React from 'react'
 export default function Home (props) {
   return (
     <div>
-      <h1 className='testing'>Hello All and all some things</h1>
+      <h1 className='testing'>Hello All and all some things!!!</h1>
     </div>
   )
 }
