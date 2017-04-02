@@ -3,16 +3,26 @@ import { default as Home } from './Home'
 import axios from 'axios'
 
 const HomeContainer = React.createClass({
+  getInitialState () {
+    return {
+      isFetching: true,
+      users: []
+    }
+  },
   componentWillMount () {
-    console.log('home container componentWillMount')
     axios.get('/api/test')
       .then(response => {
-        console.log(response.data)
+        this.setState({
+          isFetching: false,
+          users: response.data
+        })
       })
   },
   render () {
     return (
-      <Home />
+      <Home
+        isFetching={this.state.isFetching}
+        users={this.state.users} />
     )
   }
 })
