@@ -1,5 +1,5 @@
 import React from 'react'
-import { Home } from '../Components'
+import { default as Home } from './Home'
 import axios from 'axios'
 
 const HomeContainer = React.createClass({

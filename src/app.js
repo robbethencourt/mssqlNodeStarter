@@ -1,8 +1,9 @@
 import React from 'react'
 import { render } from 'react-dom'
 import { BrowserRouter, Match } from 'react-router'
-import { HomeContainer } from './Containers'
-// import './stylesheets/index.scss'
+import { HomeContainer } from './Components'
+import './index.scss'
+import './favicon.ico'
 
 const App = React.createClass({
   render () {
