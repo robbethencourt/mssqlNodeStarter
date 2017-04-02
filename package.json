@@ -16,7 +16,7 @@
     "build:dev": "webpack --env.dev",
     "prebuild": "rimraf dist/*",
     "build": "webpack -p --env.prod",
-    "serverTest": "eslint -- --fix && standard && mocha",
+    "serverTest": "eslint -- --fix && standard && mocha server/test",
     "start": "nodemon server/server.js"
   },
   "repository": {
