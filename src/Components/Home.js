@@ -1,6 +1,5 @@
 import React from 'react'
-
-// import '../stylesheets/Home.scss'
+import '../stylesheets/index.scss'
 
 export default function Home (props) {
   return (
