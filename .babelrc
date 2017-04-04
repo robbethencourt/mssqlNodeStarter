@@ -5,6 +5,7 @@
     [ "es2015", {"modules": false} ],
     "es2016"
   ],
+  "plugins": [ "transform-flow-strip-types" ],
   "env": {
     "test": {
       "plugins": [ "transform-es2015-modules-commonjs" ]
