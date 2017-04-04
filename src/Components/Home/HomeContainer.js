@@ -1,14 +1,25 @@
+// @flow
 import React from 'react'
 import { default as Home } from './Home'
 import axios from 'axios'
 
-const HomeContainer = React.createClass({
-  getInitialState () {
-    return {
+export type User = {
+  someName: string,
+  someNumber: string
+}
+
+class HomeContainer extends React.Component {
+  state: {
+    isFetching: boolean,
+    users: Array<User>
+  }
+  constructor () {
+    super()
+    this.state = {
       isFetching: true,
       users: []
     }
-  },
+  }
   componentWillMount () {
     axios.get('/api/test')
       .then(response => {
@@ -17,7 +28,7 @@ const HomeContainer = React.createClass({
           users: response.data
         })
       })
-  },
+  }
   render () {
     return (
       <Home
@@ -25,6 +36,6 @@ const HomeContainer = React.createClass({
         users={this.state.users} />
     )
   }
-})
+}
 
 export default HomeContainer

@@ -5,7 +5,7 @@ import { HomeContainer } from './Components'
 import './index.scss'
 import './favicon.ico'
 
-const App = React.createClass({
+class App extends React.Component {
   render () {
     return (
       <BrowserRouter>
@@ -16,7 +16,7 @@ const App = React.createClass({
       </BrowserRouter>
     )
   }
-})
+}
 
 render(
   <App />,

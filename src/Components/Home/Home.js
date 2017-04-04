@@ -1,9 +1,11 @@
+// @flow
 import React from 'react'
 import Loading from '../Loading/Loading'
 import './Home.scss'
 import './images/alpha-logo-2012-x2.png'
+import type { User } from './HomeContainer'
 
-export default function Home ({ isFetching, users }) {
+export default function Home ({ isFetching, users }: { isFetching: boolean, users: Array<User> }) {
   return (
     isFetching
       ? <Loading />

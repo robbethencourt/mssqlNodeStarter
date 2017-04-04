@@ -7,16 +7,19 @@
     "test": "test"
   },
   "scripts": {
-    "clientLint": "eslint src/**/*.js js/**/*.jsx webpack.config.js -- --fix",
+    "//": "start server",
+    "flow": "flow check || exit 0",
+    "clientLint": "eslint src/**/*.js js/**/*.jsx webpack.config.js -- --fix && standard src/**/*.js",
     "clientTest": "jest",
     "clientTestClearCashe": "jest -- -no-cashe",
     "clientCoverage": "npm run clientTest -- --coverage",
+    "serverLint": "eslint server/**/*.js -- --fix && standard server/**/*.js",
+    "serverTest": "mocha server/test",
     "prebuild:dev": "rimraf dist/*",
     "dev": "webpack-dev-server --env.dev",
     "build:dev": "webpack --env.dev",
     "prebuild": "rimraf dist/*",
     "build": "webpack -p --env.prod",
-    "serverTest": "eslint -- --fix && standard && mocha server/test",
     "start": "nodemon server/server.js"
   },
   "repository": {
@@ -35,6 +38,12 @@
       ".scss$": "<rootDir>/src/__mocks__/styleMock.js"
     }
   },
+  "standard": {
+    "parser": "babel-eslint",
+    "plugins": [
+      "flowtype"
+    ]
+  },
   "dependencies": {
     "axios": "^0.15.3",
     "body-parser": "~1.16.1",
@@ -50,9 +59,11 @@
     "babel-jest": "^19.0.0",
     "babel-loader": "^6.4.1",
     "babel-plugin-transform-es2015-modules-commonjs": "^6.24.0",
+    "babel-plugin-transform-flow-strip-types": "^6.22.0",
     "babel-polyfill": "^6.23.0",
     "babel-preset-es2015": "^6.24.0",
     "babel-preset-es2016": "^6.22.0",
+    "babel-preset-flow": "^6.23.0",
     "babel-preset-react": "^6.23.0",
     "chai": "^3.5.0",
     "chai-http": "^3.0.0",
@@ -61,13 +72,16 @@
     "enzyme-to-json": "^1.5.0",
     "eslint": "^3.18.0",
     "eslint-config-standard": "^7.1.0",
+    "eslint-config-standard-flow": "^1.0.1",
     "eslint-config-standard-jsx": "^3.3.0",
     "eslint-config-standard-react": "^4.3.0",
+    "eslint-plugin-flowtype": "^2.30.4",
     "eslint-plugin-promise": "^3.5.0",
     "eslint-plugin-react": "^6.10.3",
     "eslint-plugin-standard": "^2.1.1",
     "extract-text-webpack-plugin": "^2.1.0",
     "file-loader": "^0.11.1",
+    "flow-bin": "^0.42.0",
     "html-webpack-plugin": "^2.28.0",
     "inline-manifest-webpack-plugin": "^3.0.1",
     "jasmine-core": "^2.5.2",
