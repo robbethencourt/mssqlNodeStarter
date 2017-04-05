@@ -25,7 +25,7 @@ class HomeContainer extends React.Component {
     axios.get('/api/test')
       .then(response => {
         this.setState({
-          isFetching: true,
+          isFetching: false,
           users: response.data
         })
       })
