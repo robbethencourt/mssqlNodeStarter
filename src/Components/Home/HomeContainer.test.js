@@ -1,4 +1,4 @@
-/* global test, expect */
+/* global describe, test, expect */
 import React from 'react'
 import { mount } from 'enzyme'
 import HomeContainer from './HomeContainer'
