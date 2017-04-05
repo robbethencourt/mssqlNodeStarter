@@ -11,7 +11,8 @@ export type User = {
 class HomeContainer extends React.Component {
   state: {
     isFetching: boolean,
-    users: Array<User>
+    users: Array<User>,
+    errorFetching: ''
   }
   constructor () {
     super()
@@ -20,12 +21,18 @@ class HomeContainer extends React.Component {
       users: []
     }
   }
-  componentWillMount () {
+  componentDidMount () {
     axios.get('/api/test')
       .then(response => {
         this.setState({
           isFetching: false,
           users: response.data
+        })
+      })
+      .catch(error => {
+        this.setState({
+          isFetching: false,
+          errorFetching: 'error, ' + error
         })
       })
   }

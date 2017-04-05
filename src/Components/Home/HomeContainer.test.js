@@ -1,9 +1,16 @@
 /* global test, expect */
 import React from 'react'
-import { shallow } from 'enzyme'
-import HomeContainer from './HomeContainer.js'
+import { mount } from 'enzyme'
+import HomeContainer from './HomeContainer'
+import Home from './Home'
 
-test('HomeContainer should exist', () => {
-  const component = shallow(<HomeContainer />)
-  expect(component.exists())
+describe('<HomeContainer />', () => {
+  test('should exist', () => {
+    const component = mount(<HomeContainer />)
+    expect(component.exists())
+  })
+  test('should contain <Home /> component', () => {
+    const component = mount(<HomeContainer />)
+    expect(component.find(Home).length).toEqual(1)
+  })
 })
