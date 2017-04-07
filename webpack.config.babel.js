@@ -35,7 +35,7 @@ module.exports = env => {
         },
         {
           test: /\.scss$/,
-          loader: ExtractTextWebpackPlugin.extract({ fallback: 'style-loader', loader: 'css-loader!sass-loader' })
+          loader: ExtractTextWebpackPlugin.extract({ fallback: 'style-loader', loader: 'css-loader!postcss-loader!sass-loader' })
         },
         {
           test: /\.jpe?g$|\.ico$|\.gif$|\.png$|\.svg$|\.woff$|\.ttf$|\.wav$|\.mp3$/,
